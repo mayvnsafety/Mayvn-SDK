@@ -1,0 +1,28 @@
+{
+  "name": "mayvn-sdk",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "typecheck": "bun check",
+    "build": "bun build.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.4",
+    "typescript": "^7"
+  },
+  "license": "AGPL-3.0-only",
+  "dependencies": {
+    "axios": "^1.21.1"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist/**/*"
+  ]
+}
