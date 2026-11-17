@@ -1,0 +1,7 @@
+{
+  "name": "@mayvnsafety/sdk",
+  "version": "1.0.0",
+  "dependencies": {
+    "mayvn-sdk": "1.0.0"
+  }
+}
