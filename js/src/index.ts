@@ -1,16 +1,6 @@
 import axios, { AxiosError, type AxiosRequestConfig, type AxiosResponse } from "axios";
-
-export interface MayvnClientInitOptions {
-    api_key: string,
-    mayvn_url: string
-}
-
-export type AwaitedAwaitableMayvnResponse<T> = {
-    body: T | undefined,
-    headers: object,
-    status: number,
-    errorReason: "Unknown" | "Failed Validation" | ""
-}
+import { type AwaitedAwaitableMayvnResponse, type MayvnClientInitOptions } from "./shared";
+import { UserAPIs } from "./dashboard";
 
 export class AwaitableMayvnResponse<T> {
     protected request: Promise<AxiosResponse>;
@@ -156,15 +146,29 @@ class RobloxAPIs {
     }
 }
 
+class DashboardAPIs {
+    protected api_key: string;
+    protected mayvn_url: string;
+    public user: UserAPIs;
+
+    constructor ({ api_key, mayvn_url }: MayvnClientInitOptions) {
+        this.api_key = api_key;
+        this.mayvn_url = mayvn_url;
+        this.user = new UserAPIs({ api_key, mayvn_url });
+    }
+}
+
 export class MayvnClient {
     protected api_key: string;
     protected mayvn_url: string;
     public roblox: RobloxAPIs;
+    public dashboard: DashboardAPIs;
 
     constructor ({ api_key, mayvn_url }: MayvnClientInitOptions) {
         this.api_key = api_key;
         this.mayvn_url = mayvn_url;
 
         this.roblox = new RobloxAPIs({ api_key, mayvn_url });
+        this.dashboard = new DashboardAPIs({ api_key, mayvn_url });
     }
 }

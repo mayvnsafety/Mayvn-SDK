@@ -19,7 +19,7 @@ await Bun.build({
     },
     dts: true,
     banner: `/*
- * SPDX-License-Identifier: AGPL-3.0-only
+ * SPDX-License-Identifier: LGPL-3.0-only
  * Copyright 2026 bogdan-glitchm
 */`,
 });
